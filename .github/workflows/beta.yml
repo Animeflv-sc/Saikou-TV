@@ -34,7 +34,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.YOUR_SECRET_NAME }}
       with:
         tag_name: v${{ env.VERSION }}
         release_name: Saikou TV Beta ${{ env.VERSION }}
