@@ -1,8 +1,6 @@
 # **Saikou TV**
 <p align="center">
-   <a href="https://discord.gg/2T7TunuwFZ"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"></a>
-   <a href="https://telegram.me/saikou_app" ><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a> 
-   <a href="https://github.com/kemuriXD/SaikouTV/releases"><img src="https://img.shields.io/github/downloads/kemuriXD/SaikouTV/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
+   <a href="https://github.com/Animeflv-sc/Saikou-TV/releases"><img src="https://img.shields.io/github/downloads/kemuriXD/SaikouTV/total?color=%233DDC84&logo=android&logoColor=%23fff&style=for-the-badge"></a>
 </p>
 
 Saikou TV is crafted based on simplistic yet state-of-the-art elegance. It is an [Anilist](https://anilist.co/) only client, which also lets you stream/download Anime & Manga.
@@ -37,39 +35,13 @@ Saikou TV is crafted based on simplistic yet state-of-the-art elegance. It is an
 
 * **Available Anime sources:-**
 
-|                      SITE                      |    STATUS    |
-|:----------------------------------------------:|:------------:|
-|        [AllAnime](https://allanime.to)         |   WORKING    | 
-|          [Gogo](https://gogoanime.cl)          |   WORKING    |
-|           [Kaido](https://kaido.to)            |   WORKING    |
-|           [Marin](https://marin.moe)           |   WORKING    |
-|       [AnimePahe](https://animepahe.ru)        |   WORKING    |
-|         [AniWave](https://aniwave.to)          |   WORKING    |
+|               SITE                |    STATUS    |
+|:---------------------------------:|:------------:|
+|   [Gogo](https://gogoanime.cl)    |   WORKING    |
+| [AnimePahe](https://animepahe.ru) |   WORKING    |
+|  [Animedao](https://animedao.bz)  |   WORKING    |
 
-(Source list updated as of 03/08/2023)
-
-
-## WANT TO CONTRIBUTE?
-
-- All contributions are welcome, from code to documentation to graphics to design suggestions to bug reports. Please use GitHub to its fullest; contribute Pull Requests, contribute tutorials or other content- whatever you have to offer, we can use it!
-
-- You can come hang out with our awesome community and request new features and report any bugs or issue at our discord server too.
-
-### Official Discord Server
-
-<p align="center">
- <a href="https://discord.gg/2T7TunuwFZ">
-  <img src="https://invidget.switchblade.xyz/2T7TunuwFZ">
- </a>
-</p>
-
-### Official Telegram Group
-
-https://telegram.me/saikou_app
-
-### VISIT FOR MORE INFORMATION:-
-
-https://saikou.me/
+(Source list updated as of 10/12/2023)
 
 ## DISCLAIMER
 
