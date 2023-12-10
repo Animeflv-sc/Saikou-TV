@@ -1,4 +1,7 @@
-# 1.1.0
+# 1.4.5
 
-- Re-added AnimeDao
-- Reverted app banner icon
+Saikou with TV support
+
+Version Changes:
+
+    Updated upstreams
