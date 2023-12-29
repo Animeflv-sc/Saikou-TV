@@ -11,7 +11,6 @@ import ani.saikou.parsers.VideoServer
 import ani.saikou.parsers.anime.extractors.DoodStream
 import ani.saikou.parsers.anime.extractors.FileMoon
 import ani.saikou.parsers.anime.extractors.GogoCDN
-import ani.saikou.parsers.anime.extractors.Mp4Upload
 import ani.saikou.parsers.anime.extractors.RapidCloud
 import ani.saikou.parsers.anime.extractors.OkRu
 import ani.saikou.parsers.anime.extractors.StreamSB
@@ -19,8 +18,6 @@ import ani.saikou.parsers.anime.extractors.StreamTape
 import ani.saikou.parsers.anime.extractors.VidStreaming
 import ani.saikou.parsers.anime.extractors.ALions
 import ani.saikou.parsers.anime.extractors.AWish
-
-
 
 
 class Gogo : AnimeParser() {
@@ -74,10 +71,11 @@ class Gogo : AnimeParser() {
             "rapid-cloud.co"              -> RapidCloud(server)
             "streamtape.com"              -> StreamTape(server)
             "vidstream.pro"               -> VidStreaming(server)
-//            "mp4upload.com"               -> Mp4Upload(server)
+//          "mp4upload.com"               -> Mp4Upload(server)
             "playtaku.net","goone.pro"    -> GogoCDN(server)
             "alions.pro"                  -> ALions(server)
             "awish.pro"                   -> AWish(server)
+            "sb"                          -> StreamSB(server)
             "dood.wf"                     -> DoodStream(server)
             "ok.ru"                       -> OkRu(server)
             "streamlare.com"              -> null // streamlare.com/e/vJ41zYN1aQblwA3g

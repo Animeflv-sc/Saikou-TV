@@ -1,5 +1,6 @@
 package ani.saikou.tv
 
+import android.annotation.SuppressLint
 import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
@@ -110,19 +111,23 @@ class TVAnimeFragment: BrowseSupportFragment()  {
         recommendedAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
         plannedAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
         completedAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
+        updatedAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
         genresAdapter = ArrayObjectAdapter(GenresPresenter(true))
+
         trendingAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
         popularAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
-        updatedAdapter = ArrayObjectAdapter(AnimePresenter(0, requireActivity()))
+
+
 
         continueRow = ListRow(HeaderItem(getString(R.string.continue_watching)), continueAdapter)
         recommendedRow = ListRow(HeaderItem(getString(R.string.recommended)), recommendedAdapter)
         plannedRow = ListRow(HeaderItem(getString(R.string.planned)), plannedAdapter)
         completedRow = ListRow(HeaderItem(getString(R.string.completed)), completedAdapter)
+        updatedRow = ListRow(HeaderItem(getString(R.string.updated)), updatedAdapter)
         genresRow = ListRow(HeaderItem(getString(R.string.genres)), genresAdapter)
         trendingRow = ListRow(HeaderItem(getString(R.string.trending_anime)), trendingAdapter)
         popularRow = ListRow(HeaderItem(getString(R.string.popular_anime)), popularAdapter)
-        updatedRow = ListRow(HeaderItem(getString(R.string.updated)), updatedAdapter)
+
 
         progressBarManager.initialDelay = 0
         progressBarManager.show()
@@ -197,6 +202,7 @@ class TVAnimeFragment: BrowseSupportFragment()  {
             }
         }
 
+
         val scope = viewLifecycleOwner.lifecycleScope
         val live = Refresh.activity.getOrPut(this.hashCode()) { MutableLiveData(false) }
         live.observe(viewLifecycleOwner) {
@@ -238,10 +244,11 @@ class TVAnimeFragment: BrowseSupportFragment()  {
             progressBarManager.hide()
             //This determines order in screen
             if (Anilist.userid == null) {
+                rowAdapter.add(updatedRow)
                 rowAdapter.add(genresRow)
                 rowAdapter.add(trendingRow)
                 rowAdapter.add(popularRow)
-                rowAdapter.add(updatedRow)
+
                 rowAdapter.add(ButtonListRow(getString(R.string.login), object : ButtonListRow.OnClickListener {
                     override fun onClick() {
                         requireActivity().supportFragmentManager.beginTransaction()
@@ -251,18 +258,20 @@ class TVAnimeFragment: BrowseSupportFragment()  {
                 }))
             } else {
                 if(continueAdapter.size() > 0)
-                rowAdapter.add(continueRow)
-                if(recommendedAdapter.size() > 0)
-                rowAdapter.add(recommendedRow)
+                    rowAdapter.add(continueRow)
+                rowAdapter.add(updatedRow)
                 if(plannedAdapter.size() > 0)
-                rowAdapter.add(plannedRow)
+                    rowAdapter.add(plannedRow)
+
                 if(completedAdapter.size() > 0)
-                rowAdapter.add(completedRow)
+                    rowAdapter.add(completedRow)
 
                 rowAdapter.add(genresRow)
                 rowAdapter.add(trendingRow)
+                if(recommendedAdapter.size() > 0)
+                    rowAdapter.add(recommendedRow)
                 rowAdapter.add(popularRow)
-                rowAdapter.add(updatedRow)
+
                 rowAdapter.add(ButtonListRow(getString(R.string.logout), object : ButtonListRow.OnClickListener {
                     override fun onClick() {
                         Anilist.removeSavedToken(requireContext())
@@ -290,7 +299,7 @@ class TVAnimeFragment: BrowseSupportFragment()  {
                         }
                         override fun onLoadCleared(placeholder: Drawable?) {}
                     })
-        }
+            }
     }
 
     override fun onResume() {
@@ -318,7 +327,8 @@ class TVAnimeFragment: BrowseSupportFragment()  {
         isHeadersTransitionOnBackEnabled = true
 
         // Set fastLane (or headers) background color
-        brandColor = Color.parseColor("#66000000")//ContextCompat.getColor(requireActivity(), R.color.bg_black)
+        brandColor = Color.parseColor("#66000000")
+//        ContextCompat.getColor(requireActivity(), R.color.bg_white)
         // Set search icon color.
         searchAffordanceColor = ContextCompat.getColor(requireActivity(), R.color.pink_200)
 
@@ -335,7 +345,7 @@ class TVAnimeFragment: BrowseSupportFragment()  {
         setOnSearchClickedListener {
             val fragment = TVSearchFragment()
             fragment.setArgs("ANIME", null, null)
-           parentFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_tv_fragment, fragment).commit()
+            parentFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.main_tv_fragment, fragment).commit()
         }
 
         setOnItemViewClickedListener { itemViewHolder, item, rowViewHolder, row ->
@@ -403,11 +413,12 @@ class TVAnimeFragment: BrowseSupportFragment()  {
         }
     }
 
-    
+
     private fun clearHomeTVChannel() {
         requireContext().contentResolver.delete(TvContractCompat.PreviewPrograms.CONTENT_URI, null, null)
     }
 
+    @SuppressLint("RestrictedApi")
     private fun addMediaToHomeTVChannel(media: Media): Long {
         val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return -1
         val channelID = sharedPref.getLong(TVMainActivity.defaultChannelIDKey, -1)

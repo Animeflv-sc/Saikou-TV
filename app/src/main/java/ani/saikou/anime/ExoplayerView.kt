@@ -1023,7 +1023,7 @@ class ExoplayerView : AppCompatActivity(), Player.Listener {
                     "tr-TR"  -> "Turkish"
                     "ar-ME"  -> "Arabic"
                     else     -> "English"
-                    }
+                }
                 }
             }
         }
@@ -1038,29 +1038,29 @@ class ExoplayerView : AppCompatActivity(), Player.Listener {
         var sub: MediaItem.SubtitleConfiguration? = null
         if(newSub == null && subtitle != null) {
             sub = MediaItem.SubtitleConfiguration
-                    .Builder(Uri.parse(subtitle!!.url.url))
-                    .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                    .setMimeType(
-                        when (subtitle?.type) {
-                            SubtitleType.VTT -> MimeTypes.TEXT_VTT
-                            SubtitleType.ASS -> MimeTypes.TEXT_SSA
-                            SubtitleType.SRT -> MimeTypes.APPLICATION_SUBRIP
-                            else             -> MimeTypes.TEXT_UNKNOWN
-                        }
-                    )
-                    .build()
-        }
-        if(newSub != null){
-            sub = MediaItem.SubtitleConfiguration
-                    .Builder(Uri.parse(newSub.url.url))
-                    .setSelectionFlags(C.SELECTION_FLAG_FORCED)
-                    .setMimeType(when (newSub.type) {
+                .Builder(Uri.parse(subtitle!!.url.url))
+                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+                .setMimeType(
+                    when (subtitle?.type) {
                         SubtitleType.VTT -> MimeTypes.TEXT_VTT
                         SubtitleType.ASS -> MimeTypes.TEXT_SSA
                         SubtitleType.SRT -> MimeTypes.APPLICATION_SUBRIP
-                        }
-                    )
-                    .build()
+                        else             -> MimeTypes.TEXT_UNKNOWN
+                    }
+                )
+                .build()
+        }
+        if(newSub != null){
+            sub = MediaItem.SubtitleConfiguration
+                .Builder(Uri.parse(newSub.url.url))
+                .setSelectionFlags(C.SELECTION_FLAG_FORCED)
+                .setMimeType(when (newSub.type) {
+                    SubtitleType.VTT -> MimeTypes.TEXT_VTT
+                    SubtitleType.ASS -> MimeTypes.TEXT_SSA
+                    SubtitleType.SRT -> MimeTypes.APPLICATION_SUBRIP
+                }
+                )
+                .build()
         }
 
         lifecycleScope.launch(Dispatchers.IO) {

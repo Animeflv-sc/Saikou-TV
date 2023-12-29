@@ -86,7 +86,7 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
                                 startExoplayer(media!!)
                             } else fail()
                         }
-                        
+
                         if (ep.extractors.isNullOrEmpty()) {
                             model.getEpisode().observe(this) {
                                 if (it != null) {
@@ -181,8 +181,8 @@ class SelectorDialogFragment : BottomSheetDialogFragment() {
             val extractor = links[position]
             holder.binding.streamName.text = extractor.server.name
 
-                holder.binding.streamRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                holder.binding.streamRecyclerView.adapter = VideoAdapter(extractor)
+            holder.binding.streamRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            holder.binding.streamRecyclerView.adapter = VideoAdapter(extractor)
 
         }
 

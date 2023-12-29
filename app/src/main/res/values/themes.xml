@@ -71,6 +71,9 @@
         <item name="colorOnSurfaceVariant">@color/nav_tab</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textColor">@color/bg_white</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">1000</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/anim_splash</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
     </style>
 
     <style name="TVDialogTheme" parent="Theme.Leanback">

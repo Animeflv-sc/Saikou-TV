@@ -218,5 +218,3 @@ class EpisodeAdapter(
         type = t
     }
 }
-
-

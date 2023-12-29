@@ -214,31 +214,31 @@ class TVMediaPlayer: VideoSupportFragment(), VideoPlayerGlue.OnActionClickedList
     }
 
     fun showContinuePlaying() {
-            val time = String.format(
-                "%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(playbackPosition),
-                TimeUnit.MILLISECONDS.toMinutes(playbackPosition) - TimeUnit.HOURS.toMinutes(
-                    TimeUnit.MILLISECONDS.toHours(
-                        playbackPosition
-                    )
-                ),
-                TimeUnit.MILLISECONDS.toSeconds(playbackPosition) - TimeUnit.MINUTES.toSeconds(
-                    TimeUnit.MILLISECONDS.toMinutes(
-                        playbackPosition
-                    )
+        val time = String.format(
+            "%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(playbackPosition),
+            TimeUnit.MILLISECONDS.toMinutes(playbackPosition) - TimeUnit.HOURS.toMinutes(
+                TimeUnit.MILLISECONDS.toHours(
+                    playbackPosition
+                )
+            ),
+            TimeUnit.MILLISECONDS.toSeconds(playbackPosition) - TimeUnit.MINUTES.toSeconds(
+                TimeUnit.MILLISECONDS.toMinutes(
+                    playbackPosition
                 )
             )
-            AlertDialog.Builder(requireContext(), R.style.TVDialogTheme).setTitle("Continue from ${time}?").apply {
-                setCancelable(false)
-                setPositiveButton("Yes") { d, _ ->
-                    initVideo()
-                    d.dismiss()
-                }
-                setNegativeButton("No") { d, _ ->
-                    playbackPosition = 0L
-                    initVideo()
-                    d.dismiss()
-                }
-            }.show()
+        )
+        AlertDialog.Builder(requireContext(), R.style.TVDialogTheme).setTitle("Continue from ${time}?").apply {
+            setCancelable(false)
+            setPositiveButton("Yes") { d, _ ->
+                initVideo()
+                d.dismiss()
+            }
+            setNegativeButton("No") { d, _ ->
+                playbackPosition = 0L
+                initVideo()
+                d.dismiss()
+            }
+        }.show()
     }
 
     fun initVideo() {
@@ -314,7 +314,7 @@ class TVMediaPlayer: VideoSupportFragment(), VideoPlayerGlue.OnActionClickedList
             }
         })
 
-        playerGlue = VideoPlayerGlue(requireActivity(), LeanbackPlayerAdapter(requireActivity(), exoPlayer, 16), true,this)
+        playerGlue = VideoPlayerGlue(requireActivity(), LeanbackPlayerAdapter(requireActivity(), exoPlayer, 15), true,this)
         playerGlue.host = VideoSupportFragmentGlueHost(this)
         playerGlue.title = media.mainName()
 

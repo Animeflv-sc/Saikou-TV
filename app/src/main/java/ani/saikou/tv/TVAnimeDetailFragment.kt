@@ -387,35 +387,35 @@ class TVAnimeDetailFragment() : DetailsSupportFragment() {
                     sourceSelector
                 ).commit()
         } else
-        if (action.id.toInt() == 1) {
-            val infoFragment = TVAnimeDetailInfoFragment()
-            infoFragment.media = media
-            parentFragmentManager.beginTransaction().addToBackStack(null)
-                .replace(
-                    R.id.main_detail_fragment,
-                    infoFragment
-                ).commit()
-        } else
-        if (action.id.toInt() == 2) {
-            val gridSelector = TVGridSelectorFragment()
-            gridSelector.sourceId = media.selected!!.source
-            gridSelector.mediaId = media.id
-            parentFragmentManager.beginTransaction().addToBackStack(null)
-                .replace(
-                    R.id.main_detail_fragment,
-                    gridSelector
-                ).commit()
-        } else
-        if (action.id.toInt() == 3){
-            val checked = !media.selected!!.preferDub
-            val selected = model.loadSelected(media)
-            model.watchSources?.get(selected.source)?.selectDub = checked
-            selected.preferDub = checked
-            model.saveSelected(media.id, selected, requireActivity())
-            media.selected = selected
-            lifecycleScope.launch(Dispatchers.IO) { model.forceLoadEpisode(media, selected.source) }
-            setupActions()
-        }
+            if (action.id.toInt() == 1) {
+                val infoFragment = TVAnimeDetailInfoFragment()
+                infoFragment.media = media
+                parentFragmentManager.beginTransaction().addToBackStack(null)
+                    .replace(
+                        R.id.main_detail_fragment,
+                        infoFragment
+                    ).commit()
+            } else
+                if (action.id.toInt() == 2) {
+                    val gridSelector = TVGridSelectorFragment()
+                    gridSelector.sourceId = media.selected!!.source
+                    gridSelector.mediaId = media.id
+                    parentFragmentManager.beginTransaction().addToBackStack(null)
+                        .replace(
+                            R.id.main_detail_fragment,
+                            gridSelector
+                        ).commit()
+                } else
+                    if (action.id.toInt() == 3){
+                        val checked = !media.selected!!.preferDub
+                        val selected = model.loadSelected(media)
+                        model.watchSources?.get(selected.source)?.selectDub = checked
+                        selected.preferDub = checked
+                        model.saveSelected(media.id, selected, requireActivity())
+                        media.selected = selected
+                        lifecycleScope.launch(Dispatchers.IO) { model.forceLoadEpisode(media, selected.source) }
+                        setupActions()
+                    }
     }
 
 }

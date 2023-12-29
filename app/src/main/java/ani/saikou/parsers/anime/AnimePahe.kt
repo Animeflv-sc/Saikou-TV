@@ -16,9 +16,9 @@ class AnimePahe : AnimeParser() {
     override val isDubAvailableSeparately = false
 
     override suspend fun search(query: String): List<ShowResponse> {
-        val resp = client.get("$hostUrl/api?m=search&q=${encode(query)}").parsed<SearchQuery>()
+        val resp = client.get("$hostUrl//api?m=search&q=${encode(query)}").parsed<SearchQuery>()
         return resp.data.map {
-            val epLink = "$hostUrl/api?m=release&id=${it.session}&sort=episode_asc"
+            val epLink = "$hostUrl//api?m=release&id=${it.session}&sort=episode_asc"
             ShowResponse(it.title, epLink, it.poster, extra = mapOf("t" to System.currentTimeMillis().toString()))
         }
     }
@@ -27,9 +27,10 @@ class AnimePahe : AnimeParser() {
         val resp = client.get(animeLink).parsed<ReleaseRouteResponse>()
         val releaseId = animeLink.substringAfter("&id=").substringBefore("&sort")
         return (1 until resp.lastPage + 1).map { i->
-            val url = "$hostUrl/api?m=release&id=$releaseId&sort=episode_asc&page=$i"
+            val url = "$hostUrl//api?m=release&id=$releaseId&sort=episode_asc&page=$i"
+//            https://animepahe.ru/play/3625d70e-7bb4-7431-2057-e449df403440/6205fa5a34810bf3c06a84019c622b1d04e0949beeb470141f44662fb96da9dc
             client.get(url).parsed<ReleaseRouteResponse>().data!!.map { ep ->
-                val kwikEpLink = "$hostUrl/play/${releaseId}/${ep.session}"
+                val kwikEpLink = "$hostUrl/play/3625d70e-7bb4-7431-2057-e449df403440/6205fa5a34810bf3c06a84019c622b1d04e0949beeb470141f44662fb96da9dc"
                 Episode(ep.episode.toString().substringBefore(".0"), kwikEpLink, ep.title, ep.snapshot)
             }
         }.flatten()

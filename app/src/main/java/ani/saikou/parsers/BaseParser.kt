@@ -138,5 +138,3 @@ data class ShowResponse(
     constructor(name: String, link: String, coverUrl: String)
             : this(name, link, FileUrl(coverUrl))
 }
-
-

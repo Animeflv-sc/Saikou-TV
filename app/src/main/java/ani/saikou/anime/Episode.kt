@@ -22,5 +22,3 @@ data class Episode(
     val extra: Any?=null,
 
     ) : Serializable
-
-

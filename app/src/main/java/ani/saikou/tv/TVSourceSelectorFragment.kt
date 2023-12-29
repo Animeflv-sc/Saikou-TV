@@ -68,7 +68,7 @@ class TVSourceSelectorFragment(): VerticalGridSupportFragment() {
 
         inner class SourceViewHolder(val binding: TvItemSourceBinding) : Presenter.ViewHolder(binding.root)
 
-            override fun onCreateViewHolder(parent: ViewGroup?): ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup?): ViewHolder {
             return SourceViewHolder(TvItemSourceBinding.inflate(LayoutInflater.from(parent?.context), parent, false))
         }
 

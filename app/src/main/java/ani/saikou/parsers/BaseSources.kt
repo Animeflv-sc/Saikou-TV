@@ -77,6 +77,3 @@ abstract class BaseSources {
         get(i).saveShowResponse(mediaId, response, true)
     }
 }
-
-
-

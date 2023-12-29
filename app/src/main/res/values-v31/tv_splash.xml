@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SaikouTV.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/anim_splash</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:splashScreenTheme">@style/Theme.SaikouTV.Splash</item>
+
+
+    </style>
+</resources>
